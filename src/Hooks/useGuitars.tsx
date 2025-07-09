@@ -7,8 +7,13 @@ function useGuitars() {
 
   const fetchProducts = async () => {
     const response = await fetch(URL);
-    const data: Product[] = await response.json();
-    setProducts(data);
+    const data = await response.json();
+    if (Array.isArray(data)) {
+      setProducts(data as Product[]);
+    } else {
+      // handle error or unexpected data
+      setProducts([]);
+    }
   };
 
   useEffect(() => {
