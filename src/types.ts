@@ -33,4 +33,14 @@ type Product = {
   category: string;
 };
 
-export type { Guitar, Product };
+type ProductToCompare = {
+  id: number;
+  title: string;
+  price: number;
+  image: string;
+  category: string;
+  available: boolean;
+  rating: number;
+};
+
+export type { Guitar, Product, ProductToCompare };
