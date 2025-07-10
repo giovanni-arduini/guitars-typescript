@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import useFavorites from "../Hooks/useFavorites";
 import { useGlobalContext } from "./GlobalContext";
-import type { Product, Guitar } from "../types";
+import type { Product } from "../types";
 
 type FavoritesContextType = {
   favorites: Product[];
