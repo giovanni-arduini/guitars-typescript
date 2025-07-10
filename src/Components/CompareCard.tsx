@@ -1,9 +1,9 @@
 import { useAvailability } from "../Hooks/useAvailability";
 import { useCompareContext } from "../Contexts/CompareContext";
-import type { ProductToCompare } from "../types";
+import type { Guitar } from "../types";
 
 type CompareCardProps = {
-  item: ProductToCompare;
+  item: Guitar;
 };
 
 export default function CompareCard({ item }: CompareCardProps) {
@@ -60,14 +60,19 @@ export default function CompareCard({ item }: CompareCardProps) {
               alt=""
             />
             <div className="flex flex-col justify-around xl:items-end p-4 items-center">
-              <p className="text-orange-300">
+              {/* <p className="text-orange-300">
                 {stars.map((e) => {
-                  if (e <= Math.round(rating)) {
+                  if (e <= Math.round(rating ?? 0)) {
                     return "★";
                   }
                   return "☆";
                 })}
-              </p>
+              </p> */}
+              {rating !== undefined && (
+                <p className="text-orange-300">
+                  {stars.map((e) => (e <= Math.round(rating) ? "★" : "☆"))}
+                </p>
+              )}
               <p>
                 Category:
                 {category}
