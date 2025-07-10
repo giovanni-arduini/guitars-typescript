@@ -16,7 +16,13 @@ type FavoritesContextType = {
 const FavoritesContext = createContext<FavoritesContextType | null>(null);
 
 export function useFavoritesContext() {
-  return useContext(FavoritesContext);
+  const context = useContext(FavoritesContext);
+  if (!context) {
+    throw new Error(
+      "useFavoritesContext must be used within a FavoritesProvider"
+    );
+  }
+  return context;
 }
 
 type FavoritesContextProviderProps = {

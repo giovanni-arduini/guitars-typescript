@@ -16,7 +16,13 @@ type CompareContextType = {
 const CompareContext = createContext<CompareContextType | null>(null);
 
 export function useCompareContext() {
-  return useContext(CompareContext);
+  const context = useContext(CompareContext);
+  if (!context) {
+    throw new Error(
+      "useFavoritesContext must be used within a CompareProvider"
+    );
+  }
+  return context;
 }
 
 type CompareContextProviderProps = {
