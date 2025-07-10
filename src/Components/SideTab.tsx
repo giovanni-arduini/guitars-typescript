@@ -1,9 +1,9 @@
 type SideTabProps = {
   title: string;
-  content: undefined;
+  content?: undefined;
   onClose: () => void;
   show: boolean;
-  position: string;
+  position?: string;
 };
 
 export default function SideTab({
