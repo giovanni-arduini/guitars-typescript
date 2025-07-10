@@ -4,8 +4,6 @@ import { useCompareContext } from "../Contexts/CompareContext";
 
 import ProductCard from "../Components/ProductCard";
 
-import type { Product } from "../types";
-
 function debounce<T>(callback: (value: T) => void, delay: number) {
   let timer: ReturnType<typeof setTimeout>;
   return (value: T) => {
@@ -96,7 +94,7 @@ function ProductsList() {
         </button>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
           {filteredList.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} {...product} />
           ))}
         </div>
       </section>
