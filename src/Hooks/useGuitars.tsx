@@ -5,13 +5,18 @@ function useGuitars() {
   const [products, setProducts] = useState<Product[] | null>(null);
   const URL = import.meta.env.VITE_API_URL;
 
-  const fetchProducts = async () => {
+  const fetchProducts = async (): Promise<void> => {
     const response = await fetch(URL);
-    const data = await response.json();
+    // throw di eventuali errori 400 e 500
+    if (!response.ok) {
+      throw new Error(`Failed to fetch products. Status: ${response.status}`);
+    }
+    const data: unknown = await response.json();
+    // controllo che data sia di tipo array
     if (Array.isArray(data)) {
       setProducts(data as Product[]);
     } else {
-      // handle error or unexpected data
+      // set come array vuoto in caso data non sia array
       setProducts([]);
     }
   };
@@ -20,8 +25,14 @@ function useGuitars() {
     fetchProducts();
   }, []);
 
-  const getProduct = async (id: number) => {
-    const response = await fetch(URL + id);
+  const getProduct = async (id: number): Promise<Guitar> => {
+    const response = await fetch(`${URL}${id}`);
+    // throw di eventuali errori 400 e 500
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch product with id ${id}: ${response.status}`
+      );
+    }
     const data: Guitar = await response.json();
     return data;
   };
