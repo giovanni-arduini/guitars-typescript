@@ -2,11 +2,11 @@ import { createContext, useContext, useEffect } from "react";
 import { useGlobalContext } from "./GlobalContext";
 import useCompare from "../Hooks/useCompare";
 import { useFavoritesContext } from "./FavoritesContext";
-import type { Product, Guitar } from "../types";
+import type { Product, Guitar, ProductToCompare } from "../types";
 
 type CompareContextType = {
   showCompare: boolean;
-  itemsToCompare: Product[];
+  itemsToCompare: Guitar[];
   compareItem: (id: number) => Promise<void>;
   closeCompare: () => void;
   toggleCompare: () => void;
@@ -37,7 +37,7 @@ export function CompareProvider({ children }: CompareContextProviderProps) {
   // const setShowFavorites = favoritesContext?.setShowFavorites;
 
   const { showCompare, setShowCompare, itemsToCompare, setItemsToCompare } =
-    useCompare<Product>();
+    useCompare<Guitar>();
 
   async function getItem(id: number): Promise<Guitar> {
     if (!getProduct) {
