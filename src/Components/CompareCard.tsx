@@ -1,26 +1,13 @@
 import { useAvailability } from "../Hooks/useAvailability";
 import { useCompareContext } from "../Contexts/CompareContext";
+import type { ProductToCompare } from "../types";
 
 type CompareCardProps = {
-  title: string;
-  price: number;
-  image: string;
-  category: string;
-  available: boolean;
-  rating: number;
-  id: number;
+  item: ProductToCompare;
 };
 
-export default function CompareCard({
-  title,
-  price,
-  image,
-  category,
-  available,
-  rating,
-  id,
-}: CompareCardProps) {
-  const item = { title, price, image, category, available, rating, id };
+export default function CompareCard({ item }: CompareCardProps) {
+  const { title, price, image, category, available, rating, id } = item;
 
   if (!item) {
     return <p>Loading...</p>;
