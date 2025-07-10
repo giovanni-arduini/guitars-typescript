@@ -16,7 +16,13 @@ type GlobalContextProviderProps = {
 };
 
 export function useGlobalContext() {
-  return useContext(GlobalContext);
+  const context = useContext(GlobalContext);
+  if (!context) {
+    throw new Error(
+      "useFavoritesContext must be used within a FavoritesProvider"
+    );
+  }
+  return context;
 }
 
 export function GlobalProvider({ children }: GlobalContextProviderProps) {
