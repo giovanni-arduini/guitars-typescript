@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect } from "react";
 import { useGlobalContext } from "./GlobalContext";
 import useCompare from "../Hooks/useCompare";
 import { useFavoritesContext } from "./FavoritesContext";
-import type { Product, Guitar, ProductToCompare } from "../types";
+import type { Guitar } from "../types";
 
 type CompareContextType = {
   showCompare: boolean;
