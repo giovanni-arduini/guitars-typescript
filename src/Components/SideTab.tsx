@@ -1,6 +1,6 @@
 type SideTabProps = {
   title: string;
-  content?: undefined;
+  content?: React.ReactNode;
   onClose: () => void;
   show: boolean;
   position?: string;
