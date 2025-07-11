@@ -28,7 +28,7 @@ export function useGlobalContext() {
 export function GlobalProvider({ children }: GlobalContextProviderProps) {
   const { products, setProducts, getProduct } = useGuitars();
 
-  const categories = products!.reduce<string[]>((prev, prod) => {
+  const categories = (products ?? []).reduce<string[]>((prev, prod) => {
     if (prev.includes(prod.category)) {
       return prev;
     }
