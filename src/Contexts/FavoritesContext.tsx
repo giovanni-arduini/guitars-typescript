@@ -63,12 +63,16 @@ export function FavoritesProvider({ children }: FavoritesContextProviderProps) {
       setFavorites((prevFavorites) => [...prevFavorites, newFavorite]);
     } else {
       const favCounter = document.getElementById("favCounter");
+
       if (favCounter) {
         favCounter.classList.add("delete-animation");
         setTimeout(() => {
           favCounter.classList.remove("delete-animation");
         }, 1000);
       }
+      setFavorites((prevFavorites) =>
+        prevFavorites.filter((item) => item.id !== id)
+      );
     }
   };
 
