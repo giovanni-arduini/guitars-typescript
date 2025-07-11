@@ -33,8 +33,9 @@ function useGuitars() {
         `Failed to fetch product with id ${id}: ${response.status}`
       );
     }
-    const data: Guitar = await response.json();
-    return data;
+    const data = await response.json();
+    console.log(data);
+    return data.guitar;
   };
 
   return { products, setProducts, getProduct };
