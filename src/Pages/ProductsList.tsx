@@ -4,6 +4,7 @@ import { useCompareContext } from "../Contexts/CompareContext";
 import { Button, Typography } from "@mui/material";
 
 import ProductCard from "../Components/ProductCard";
+import styled from "@emotion/styled";
 
 function debounce<T>(callback: (value: T) => void, delay: number) {
   let timer: ReturnType<typeof setTimeout>;
@@ -23,6 +24,14 @@ function ProductsList() {
   const [search, setSearch] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<number>(1);
+
+  // const SetOrderButton = styled(Button)({
+  //   backgroundColor: "white",
+  //   marginBottom: "2rem",
+  //   borderRadius: "0.6rem",
+  //   color: "black",
+  //   "&:hover": { backgroundColor: "lightblue" },
+  // });
 
   const handleSearch = useCallback(
     debounce((value: string) => setSearch(value), 400),
@@ -89,15 +98,16 @@ function ProductsList() {
           }}
           sx={{
             backgroundColor: "white",
-            marginBottom: 5,
-            borderRadius: 3,
+            marginBottom: "2rem",
+            borderRadius: "0.6rem",
+            color: "black",
             "&:hover": { backgroundColor: "lightblue" },
           }}
         >
           <Typography component="p">Sort by name</Typography>
 
           <span className="text-xs text-gray-600">
-            {sortOrder > 0 ? "(A to Z)" : "  (Z to A)"}
+            {sortOrder > 0 ? " (A to Z)" : "  (Z to A)"}
           </span>
         </Button>
         {/* <button

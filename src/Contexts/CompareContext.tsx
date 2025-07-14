@@ -62,12 +62,12 @@ export function CompareProvider({ children }: CompareContextProviderProps) {
   };
 
   // Used in Header, CompareTab
-  function closeCompare() {
+  function closeCompare(): void {
     setShowCompare(false);
   }
 
   // Used in Header
-  function toggleCompare() {
+  function toggleCompare(): void {
     showCompare ? setShowCompare(false) : setShowCompare(true);
   }
 
