@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import { useGlobalContext } from "../Contexts/GlobalContext";
 import { useCompareContext } from "../Contexts/CompareContext";
+import { Button, Typography } from "@mui/material";
 
 import ProductCard from "../Components/ProductCard";
 
@@ -81,7 +82,25 @@ function ProductsList() {
             })}
           </select>
         </div>
-        <button
+        <Button
+          variant="text"
+          onClick={() => {
+            setSortOrder(sortOrder * -1);
+          }}
+          sx={{
+            backgroundColor: "white",
+            marginBottom: 5,
+            borderRadius: 3,
+            "&:hover": { backgroundColor: "lightblue" },
+          }}
+        >
+          <Typography component="p">Sort by name</Typography>
+
+          <span className="text-xs text-gray-600">
+            {sortOrder > 0 ? "(A to Z)" : "  (Z to A)"}
+          </span>
+        </Button>
+        {/* <button
           className="bg-white rounded-lg p-1 mb-4 px-2 cursor-pointer"
           onClick={() => {
             setSortOrder(sortOrder * -1);
@@ -91,7 +110,7 @@ function ProductsList() {
           <span className="text-xs text-gray-600">
             {sortOrder > 0 ? "  (A to Z)" : "  (Z to A)"}
           </span>
-        </button>
+        </button> */}
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
           {filteredList.map((product) => (
             <ProductCard key={product.id} {...product} />
